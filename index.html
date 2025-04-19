@@ -1,1 +1,399 @@
-"Test" 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darker - A Customizable Discord Theme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #101014;
+            --bg-secondary: #16161c;
+            --bg-tertiary: #1c1c24;
+            --bg-card: #232330;
+            --accent-color: hsl(260, 80%, 65%);
+            --accent-hover: hsl(260, 80%, 55%);
+            --text-primary: #dcddde;
+            --text-secondary: #a0a0a6;
+            --border-radius: 6px;
+            --spacing: 20px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+        }
+
+        header {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing) 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/3AiL3yN.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(90deg, var(--accent-color), #a875ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: background-color 0.2s, transform 0.2s;
+            margin: 0 10px 10px 0;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        section {
+            padding: var(--spacing) 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            display: inline-block;
+            position:relative;
+        }
+
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), #a875ff);
+            border-radius: 3px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing);
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: var(--spacing);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .customization {
+            background-color: var(--bg-tertiary);
+            padding: var(--spacing);
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+        }
+
+        .code-block {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: var(--spacing);
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            color: #e0e0e0;
+        }
+
+        .var-highlight {
+            color: #c678dd;
+        }
+
+        .var-comment {
+            color: #a0a0a0;
+        }
+
+        .value-highlight {
+            color: #98c379;
+        }
+
+        .installation {
+            background-color: var(--bg-secondary);
+            padding: 2rem 0;
+        }
+
+        .installation ol, .installation ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: var(--bg-tertiary);
+            padding: var(--spacing) 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Darker</h1>
+            <p>A sleek, customizable Discord theme that's easy on the eyes with extensive customization options.</p>
+            <a href="https://github.com/RealGares/Darker/archive/refs/heads/main.zip" class="btn" target="_blank">Download Theme</a>
+            <a href="https://github.com/RealGares/Darker" class="btn btn-outline" target="_blank">View on GitHub</a>
+        </div>
+    </header>
+
+    <section class="preview">
+        <div class="container">
+            <div class="section-title">
+                <h2>Theme Preview</h2>
+            </div>
+            <div class="preview-container">
+                <img src="https://i.imgur.com/3AiL3yN.png" alt="Darker Theme Preview" class="preview-image">
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Features</h2>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Deep Dark Experience</h3>
+                    <p>Carefully crafted dark color scheme that's easy on the eyes, perfect for night use and reducing eye strain.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>Complete UI Overhaul</h3>
+                    <p>Redesigned interface elements for better aesthetics and usability while keeping Discord's functionality.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Extensive Customization</h3>
+                    <p>Fine-tune every aspect of the theme with easy-to-modify CSS variables for colors, spacing, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Multiple Styles</h3>
+                    <p>Choose from various style options including compact mode, rounded UI, glass mode, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Improved Readability</h3>
+                    <p>Enhanced typography and contrast for better text readability in all areas of Discord.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Performance Optimized</h3>
+                    <p>Designed with performance in mind, including options to reduce animations for lower-end devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="installation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Installation</h2>
+            </div>
+            <ol>
+                <li>Make sure you have <a href="https://betterdiscord.app/" target="_blank" style="color: var(--accent-color);">BetterDiscord</a> installed</li>
+                <li>Download the theme files from the GitHub repository</li>
+                <li>Place <code>Darker.theme.css</code> in your BetterDiscord themes folder:
+                    <ul>
+                        <li><strong>Windows:</strong> <code>%appdata%\Roaming\BetterDiscord\themes\</code></li>
+                        <li><strong>Mac:</strong> <code>~/Library/Application Support/BetterDiscord/themes/</code></li>
+                        <li><strong>Linux:</strong> <code>~/.config/BetterDiscord/themes/</code></li>
+                    </ul>
+                </li>
+                <li>Place the <code>src</code> folder in the same location</li>
+                <li>Enable the theme in BetterDiscord settings</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="customization-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Customization</h2>
+            </div>
+            <p>Darker offers extensive customization options through CSS variables. Open the <code>Darker.theme.css</code> file in any text editor to modify these settings:</p>
+
+            <div class="customization">
+                <h3>Color Scheme</h3>
+                <div class="code-block">
+                    <span class="var-highlight">--darker-bg-1</span>: <span class="value-highlight">#101014</span>; <span class="var-comment">/* Darkest background (main chat area) */</span>
+                    <br>
+                    <span class="var-highlight">--darker-bg-2</span>: <span class="value-highlight">#16161c</span>; <span class="var-comment">/* Second level background (sidebars) */</span>
+                    <br>
+                    <span class="var-highlight">--darker-bg-3</span>: <span class="value-highlight">#1c1c24</span>; <span class="var-comment">/* Third level background (server list, popups) */</span>
+                    <br>
+                    <span class="var-highlight">--darker-bg-4</span>: <span class="value-highlight">#232330</span>; <span class="var-comment">/* Fourth level background (cards, modals) */</span>
+                    <br>
+                    <span class="var-highlight">--darker-accent-h</span>: <span class="value-highlight">260</span>; <span class="var-comment">/* Accent color hue (0-360) */</span>
+                    <br>
+                    <span class="var-highlight">--darker-accent-s</span>: <span class="value-highlight">80%</span>; <span class="var-comment">/* Accent color saturation */</span>
+                    <br>
+                    <span class="var-highlight">--darker-accent-l</span>: <span class="value-highlight">65%</span>; <span class="var-comment">/* Accent color lightness */</span>
+                </div>
+
+                <h3>Layout & Styling</h3>
+                <div class="code-block">
+                    <span class="var-highlight">--darker-radius-ui</span>: <span class="value-highlight">6px</span>; <span class="var-comment">/* UI elements radius */</span>
+                    <br>
+                    <span class="var-highlight">--darker-radius-avatar</span>: <span class="value-highlight">20%</span>; <span class="var-comment">/* Avatar radius (in percent, 50% is circle) */</span>
+                    <br>
+                    <span class="var-highlight">--darker-radius-server</span>: <span class="value-highlight">20%</span>; <span class="var-comment">/* Server icon radius */</span>
+                    <br>
+                    <span class="var-highlight">--darker-spacing-app</span>: <span class="value-highlight">10px</span>; <span class="var-comment">/* App outer margins */</span>
+                    <br>
+                    <span class="var-highlight">--darker-spacing-ui</span>: <span class="value-highlight">8px</span>; <span class="var-comment">/* General UI spacing */</span>
+                </div>
+
+                <h3>Extra Features</h3>
+                <p>To enable any of the extra features, add one or more of these classes to <code>:root</code> in your <code>Darker.theme.css</code> file:</p>
+                <div class="code-block">
+                    <span class="var-highlight">:root {</span>
+                    <br>
+                    <span class="var-highlight">--add:</span> <span class="value-highlight">darker-compact-mode;</span> <span class="var-comment">/* Makes everything smaller and more compact */</span>
+                    <br>
+                    <span class="var-highlight">--add:</span> <span class="value-highlight">darker-centered-mode;</span> <span class="var-comment">/* Centers the chat for better readability */</span>
+                    <br>
+                    <span class="var-highlight">--add:</span> <span class="value-highlight">darker-rounded-mode;</span> <span class="var-comment">/* Makes UI elements more rounded */</span>
+                    <br>
+                    <span class="var-highlight">--add:</span> <span class="value-highlight">darker-glass-mode;</span> <span class="var-comment">/* Adds transparency and blur effects */</span>
+                    <br>
+                    <span class="var-highlight">--add:</span> <span class="value-highlight">darker-custom-status-bars;</span> <span class="var-comment">/* Enhances status indicators */</span>
+                    <br>
+                    <span class="var-highlight">--add:</span> <span class="value-highlight">darker-amoled-mode;</span> <span class="var-comment">/* Pure black backgrounds for AMOLED displays */</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Darker Theme by <a href="https://github.com/RealGares">Jonno</a> | <a href="https://github.com/RealGares/Darker/issues">Report Issues</a></p>
+        </div>
+    </footer>
+</body>
+</html>

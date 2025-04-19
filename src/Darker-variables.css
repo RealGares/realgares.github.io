@@ -3,8 +3,9 @@
  * @author Jonno
  * @version 1.0.0
  * @description Variables for the Darker theme
- * @source https://github.com/RealGares/Darker
- * @website https://realgares.github.io/
+ * @source https://github.com/RealGares/realgares.github.io
+ * @website https://realgares.github.io
+ * @invite Your-Discord-Server-Invite
 */
 
 /*
@@ -62,6 +63,14 @@
 
 /* Dark theme */
 .theme-dark {
+  /* Main UI - Force even darker colors */
+  --background-primary: var(--darker-bg-1) !important;
+  --background-secondary: var(--darker-bg-2) !important;
+  --background-secondary-alt: var(--darker-bg-3) !important;
+  --background-tertiary: var(--darker-bg-2) !important;
+  --background-accent: var(--darker-accent) !important;
+  --background-floating: var(--darker-bg-3) !important;
+  
   /* Brand colors from Discord */
   --brand-experiment: var(--darker-accent) !important;
   --brand-experiment-15a: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.15) !important;
@@ -71,19 +80,13 @@
   
   /* Discord UI colors */
   --activity-card-background: var(--darker-bg-3);
-  --background-accent: var(--darker-accent);
-  --background-floating: var(--darker-bg-3);
-  --background-mobile-primary: var(--darker-bg-1);
-  --background-mobile-secondary: var(--darker-bg-2);
   --background-modifier-accent: rgba(255, 255, 255, 0.06);
   --background-modifier-active: rgba(255, 255, 255, 0.07);
   --background-modifier-hover: rgba(255, 255, 255, 0.04);
   --background-modifier-selected: rgba(255, 255, 255, 0.07);
   --background-nested-floating: var(--darker-bg-1);
-  --background-primary: var(--darker-bg-1);
-  --background-secondary: var(--darker-bg-2);
-  --background-secondary-alt: var(--darker-bg-3);
-  --background-tertiary: var(--darker-bg-2);
+  --background-mobile-primary: var(--darker-bg-1);
+  --background-mobile-secondary: var(--darker-bg-2);
   --button-danger-background: hsl(359, 87%, 59%);
   --button-danger-background-active: hsl(359, 87%, 39%);
   --button-danger-background-disabled: hsl(359, 87%, 49%);
@@ -142,10 +145,25 @@
   --scrollbar-thin-thumb: var(--darker-bg-4);
   --scrollbar-thin-track: transparent;
   --input-background: var(--darker-bg-3);
+
+  /* Text colors */
+  --text-normal: var(--darker-text-normal) !important;
+  --text-muted: var(--darker-text-muted) !important;
+  --text-link: var(--darker-text-link) !important;
+  --header-primary: var(--darker-text-normal) !important;
+  --header-secondary: var(--darker-text-muted) !important;
 }
 
 /* Light theme - we're overriding it to be dark */
 .theme-light {
+  /* Force dark theme on light theme mode */
+  --background-primary: var(--darker-bg-1) !important;
+  --background-secondary: var(--darker-bg-2) !important;
+  --background-secondary-alt: var(--darker-bg-3) !important;
+  --background-tertiary: var(--darker-bg-2) !important;
+  --background-accent: var(--darker-accent) !important;
+  --background-floating: var(--darker-bg-3) !important;
+  
   /* Brand colors from Discord */
   --brand-experiment: var(--darker-accent) !important;
   --brand-experiment-15a: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.15) !important;
@@ -155,19 +173,13 @@
   
   /* Discord UI colors - force dark theme */
   --activity-card-background: var(--darker-bg-3);
-  --background-accent: var(--darker-accent);
-  --background-floating: var(--darker-bg-3);
-  --background-mobile-primary: var(--darker-bg-1);
-  --background-mobile-secondary: var(--darker-bg-2);
   --background-modifier-accent: rgba(255, 255, 255, 0.06);
   --background-modifier-active: rgba(255, 255, 255, 0.07);
   --background-modifier-hover: rgba(255, 255, 255, 0.04);
   --background-modifier-selected: rgba(255, 255, 255, 0.07);
   --background-nested-floating: var(--darker-bg-1);
-  --background-primary: var(--darker-bg-1);
-  --background-secondary: var(--darker-bg-2);
-  --background-secondary-alt: var(--darker-bg-3);
-  --background-tertiary: var(--darker-bg-2);
+  --background-mobile-primary: var(--darker-bg-1);
+  --background-mobile-secondary: var(--darker-bg-2);
   --channeltextarea-background: var(--darker-bg-3);
   --channels-default: var(--darker-text-muted);
   --deprecated-card-bg: rgba(0, 0, 0, 0.2);
@@ -196,23 +208,34 @@
   --header-secondary: var(--darker-text-muted) !important;
   --text-normal: var(--darker-text-normal) !important;
   --text-muted: var(--darker-text-muted) !important;
+  --text-link: var(--darker-text-link) !important;
 }
 
-/* AMOLED mode for even darker experience */
-.theme-dark.darker-amoled-mode {
-  --darker-bg-1: #000000;
-  --darker-bg-2: #050505;
-  --darker-bg-3: #0a0a0a;
-  --darker-bg-4: #0f0f0f;
+/* AMOLED mode for even darker experience - Force deeper blacks */
+.theme-dark[style*="--darker-amoled-mode: 1"],
+.theme-dark[style*="--darker-amoled-mode:1"],
+.theme-light[style*="--darker-amoled-mode: 1"],
+.theme-light[style*="--darker-amoled-mode:1"] {
+  --darker-bg-1: #000000 !important;
+  --darker-bg-2: #040404 !important;
+  --darker-bg-3: #080808 !important;
+  --darker-bg-4: #0f0f0f !important;
   
   /* Adjust shadows for better visibility on pure black */
   --darker-shadow-small: 0 2px 5px rgba(0, 0, 0, 0.5);
   --darker-shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.6);
   --darker-shadow-large: 0 8px 20px rgba(0, 0, 0, 0.7);
+  
+  --background-primary: #000000 !important;
+  --background-secondary: #040404 !important;
+  --background-secondary-alt: #080808 !important;
+  --background-tertiary: #040404 !important;
+  --background-floating: #080808 !important;
 }
 
 /* Accessibility: High contrast mode */
-.theme-dark.darker-high-contrast {
+.theme-dark.darker-high-contrast,
+.theme-light.darker-high-contrast {
   --darker-text-normal: #ffffff;
   --darker-text-muted: #c0c0c0;
   --darker-text-link: hsl(var(--darker-accent-h), 100%, 75%);
@@ -221,9 +244,69 @@
   --darker-border-color: rgba(255, 255, 255, 0.15);
 }
 
+/* Glass mode - Applied directly here for compatibility */
+.theme-dark[style*="--darker-glass-mode: 1"] .sidebar-2K8pFh,
+.theme-dark[style*="--darker-glass-mode:1"] .sidebar-2K8pFh,
+.theme-light[style*="--darker-glass-mode: 1"] .sidebar-2K8pFh,
+.theme-light[style*="--darker-glass-mode:1"] .sidebar-2K8pFh,
+.theme-dark[style*="--darker-glass-mode: 1"] .members-1998pB,
+.theme-dark[style*="--darker-glass-mode:1"] .members-1998pB,
+.theme-light[style*="--darker-glass-mode: 1"] .members-1998pB,
+.theme-light[style*="--darker-glass-mode:1"] .members-1998pB,
+.theme-dark[style*="--darker-glass-mode: 1"] .guilds-1SWlCJ,
+.theme-dark[style*="--darker-glass-mode:1"] .guilds-1SWlCJ,
+.theme-light[style*="--darker-glass-mode: 1"] .guilds-1SWlCJ,
+.theme-light[style*="--darker-glass-mode:1"] .guilds-1SWlCJ {
+  --darker-bg-2: rgba(10, 10, 15, 0.7) !important;
+  --darker-bg-3: rgba(15, 15, 20, 0.7) !important;
+  background-color: rgba(10, 10, 15, 0.7) !important;
+  backdrop-filter: blur(5px);
+}
+
 /* Reduce animations when needed */
 @media (prefers-reduced-motion) {
   :root {
-    --darker-transition-time: 0s;
+    --darker-transition-speed: 0s !important;
+    --darker-transition-time: 0s !important;
   }
+  
+  *, ::before, ::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Force specific Discord elements override */
+body,
+#app-mount,
+.appMount-3lHmkl,
+.app-1q1i1E,
+.bg-h5JY_x,
+.base-3dtUhz,
+.container-3w7J-x,
+.chat-3bRxxu,
+.chatContent-a9vAAp,
+.container-1D34oG,
+.container-1a3EgQ,
+.layers-3iHuyZ,
+.layer-3QrUeG,
+.standardSidebarView-3F1I7i,
+.sidebarRegionScroller-3MXcoP,
+.contentRegionScroller-26nc1e,
+.scroller-1Bvpku,
+.wrapper-3NnKdC,
+.scroller-2TZvBN {
+  background-color: var(--darker-bg-1) !important;
+}
+
+/* Make sure theme activates on open */
+.appMount-3lHmkl::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--darker-bg-1);
+  z-index: -2;
 }

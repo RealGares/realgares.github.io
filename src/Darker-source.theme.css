@@ -3,8 +3,9 @@
  * @author Jonno
  * @version 1.0.0
  * @description Core styling for the Darker theme
- * @source https://github.com/RealGares/Darker
- * @website https://realgares.github.io/
+ * @source https://github.com/RealGares/realgares.github.io
+ * @website https://realgares.github.io
+ * @invite Your-Discord-Server-Invite
 */
 
 /* Import additional files */
@@ -20,14 +21,14 @@
   3. Fonts & Typography
   4. Scrollbars
   5. Titlebar (Windows)
-  6. Server List
+  6. Server List (Moved & Redesigned)
   7. Channel Sidebar
   8. User Area
   9. Chat Area
     9.1 Messages
     9.2 Attachments & Embeds
     9.3 Message Input
-  10. Member List
+  10. Member List (Moved to Left Side)
   11. Popouts & Modals
   12. Context Menus
   13. Settings
@@ -39,16 +40,20 @@
 */
 
 /* ================ 1. General App Styling ================ */
-body {
+body, html {
   background-color: var(--darker-bg-1);
 }
 
 .appMount-3lHmkl {
-  background-color: transparent;
+  background-color: var(--darker-bg-1);
 }
 
 .app-2rEoOp {
-  background-color: transparent;
+  background-color: var(--darker-bg-1);
+}
+
+.bg-h5JY_x {
+  background-color: var(--darker-bg-1);
 }
 
 .layers-3iHuyZ {
@@ -61,23 +66,30 @@ body {
 }
 
 /* ================ 2. Backgrounds & Backdrops ================ */
-/* Main app background */
-#app-mount {
+/* Main app background - this is critical to apply correctly */
+:root, #app-mount, .app-2rEoOp, .bg-h5JY_x {
   background: var(--darker-bg-1);
 }
 
-/* Add custom background image support */
-#app-mount::before {
+/* We need to target multiple elements to override Discord's styles */
+.appMount-3lHmkl, .app-1q1i1E, .container-3w7J-x, .chat-3bRxxu, 
+.container-1D34oG, .container-1a3EgQ, .wrapper-1F5TKx, 
+.container-1NXEtd, .base-3dtUhz, .contentRegion-3nDuYy {
+  background-color: var(--darker-bg-1) !important;
+}
+
+/* Add custom background image */
+.appMount-3lHmkl:before {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: var(--darker-bg-image, none);
+  background-image: var(--darker-bg-image, url('https://i.imgur.com/3AiL3yN.png'));
   background-position: center;
   background-size: cover;
-  opacity: var(--darker-bg-image-opacity, 0.1);
+  opacity: 0.07;
   z-index: -1;
   pointer-events: none;
 }
@@ -112,6 +124,7 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
 /* Improved text readability */
 .markup-2BOw-j {
   line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 /* ================ 4. Scrollbars ================ */
@@ -143,7 +156,7 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
 /* ================ 5. Titlebar (Windows) ================ */
 .titleBar-AC4pGV {
   background-color: var(--darker-bg-2);
-  margin-top: var(--darker-spacing-app);
+  margin-top: 0;
   height: 22px;
   border-radius: var(--darker-radius-ui) var(--darker-radius-ui) 0 0;
 }
@@ -154,29 +167,42 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
 }
 
 .wordmarkWindows-1v0lYD {
-  color: var(--darker-text-muted);
   padding: 4px 6px;
 }
 
-/* ================ 6. Server List ================ */
+/* Add "Darker by Jonno" to the top left */
+.wordmarkWindows-1v0lYD:before {
+  content: "Darker by Jonno";
+  color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+  font-weight: bold;
+  font-family: var(--darker-font-header);
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Hide the Discord wordmark to make room for our branding */
+.wordmarkWindows-1v0lYD svg {
+  display: none;
+}
+
+/* ================ 6. Server List (Moved & Redesigned) ================ */
 .guilds-1SWlCJ {
   background-color: var(--darker-bg-3);
   border-radius: var(--darker-radius-ui);
+  width: 65px !important; /* Smaller width for server list */
 }
 
 .listItem-2P_4kh {
-  width: var(--darker-server-icon-size);
-  height: var(--darker-server-icon-size);
-  margin: 0 0 var(--darker-spacing-ui);
+  width: 50px;
+  height: 50px;
+  margin: 6px auto;
 }
 
-.wrapper-25eVIn {
-  width: var(--darker-server-icon-size);
-  height: var(--darker-server-icon-size);
-}
-
-.svg-1X37T1, .wrapper-1BJsBx, .wrapper-1BJsBx.selected-bZ3Lue .childWrapper-anI2G9, .wrapper-1BJsBx:hover .childWrapper-anI2G9 {
-  background-color: transparent;
+.wrapper-25eVIn, .svg-1X37T1 {
+  width: 50px !important;
+  height: 50px !important;
 }
 
 /* Server icons */
@@ -184,18 +210,25 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
   border-radius: var(--darker-radius-server) !important;
   background-color: var(--darker-bg-4) !important;
   color: var(--darker-text-normal);
+  width: 48px !important;
+  height: 48px !important;
 }
 
 /* Selected server indicator */
 .pill-3YxEhL .item-2hkk8m {
   background-color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
   border-radius: 0 var(--darker-radius-ui) var(--darker-radius-ui) 0;
+  height: 24px;
 }
 
 /* Server folders */
 .expandedFolderBackground-1cujaW {
   background-color: var(--darker-bg-4);
   border-radius: var(--darker-radius-ui);
+}
+
+.folder-1hbNCn {
+  background-color: var(--darker-bg-3) !important;
 }
 
 /* Home icon */
@@ -211,9 +244,14 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
 }
 
 /* Channel list */
+.containerDefault--pIXnN {
+  padding: 0;
+  margin: 2px 0;
+}
+
+/* Channel rows */
 .channelRow-4X_3fi {
-  margin-left: var(--darker-spacing-ui);
-  margin-right: var(--darker-spacing-ui);
+  margin: 1px 8px;
   border-radius: var(--darker-radius-ui);
 }
 
@@ -221,6 +259,11 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
 .modeSelected-346R90 .content-1x5b-n, .modeSelected-346R90:hover .content-1x5b-n {
   background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.2);
   border-radius: var(--darker-radius-ui);
+}
+
+.modeSelected-346R90 .name-23GUGE {
+  color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+  font-weight: 600;
 }
 
 /* Channel hover effect */
@@ -231,7 +274,7 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
 
 /* Channel categories */
 .containerDefault--pIXnN {
-  padding-top: var(--darker-spacing-ui);
+  padding-top: 4px;
 }
 
 .containerDefault--pIXnN .name-23GUGE {
@@ -252,11 +295,13 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
 .panels-j1Uci_ {
   background-color: var(--darker-bg-2);
   border-radius: 0 0 var(--darker-radius-ui) var(--darker-radius-ui);
+  min-height: 90px;
+  padding: 8px;
 }
 
 .container-3baos1 {
-  height: 70px;
-  padding: var(--darker-spacing-ui);
+  height: 72px;
+  padding: 8px;
 }
 
 .avatarWrapper-2yR4wp {
@@ -283,10 +328,10 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
 
 /* Channel header */
 .title-3qD0b- {
-  background-color: var(--darker-bg-1);
+  background-color: var(--darker-bg-2) !important;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
   padding: 0 var(--darker-spacing-ui);
-  height: 48px;
+  height: 45px;
   border-radius: var(--darker-radius-ui) var(--darker-radius-ui) 0 0;
 }
 
@@ -299,24 +344,29 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
 /* 9.1 Messages */
 /* Message spacing */
 .cozyMessage-3V1Y8y {
-  padding: var(--darker-spacing-ui) var(--darker-spacing-ui) var(--darker-spacing-ui) calc(var(--darker-avatar-chat-size) + var(--darker-spacing-ui) * 2);
+  padding: 8px var(--darker-spacing-ui);
   margin: 0;
 }
 
-/* Message background - grouped */
+/* Message background */
 .message-2qnXI6 {
   background-color: transparent;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  padding: 8px 12px;
+  margin: 2px 0;
+  border-radius: var(--darker-radius-ui);
 }
 
 /* Message hover state */
 .message-2qnXI6:hover {
-  background-color: hsla(0, 0%, 100%, 0.03);
+  background-color: var(--darker-bg-3);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Message with new author */
 .cozyMessage-3V1Y8y.groupStart-23k01U {
-  margin-top: var(--darker-spacing-ui);
+  margin-top: 8px;
   border-radius: var(--darker-radius-ui) var(--darker-radius-ui) 0 0;
 }
 
@@ -364,12 +414,25 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
   border-left: 3px solid hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
 }
 
+/* Message reactions */
+.reaction-1hd86g {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+  border: none;
+}
+
+.reaction-1hd86g:hover {
+  background-color: var(--darker-bg-4);
+  border: none;
+}
+
 /* 9.2 Attachments & Embeds */
 /* File attachment */
 .attachment-33OFj0 {
   background-color: var(--darker-bg-3);
   border-radius: var(--darker-radius-ui);
   border: none;
+  padding: 10px;
 }
 
 /* Embed messages */
@@ -377,6 +440,8 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
   background-color: var(--darker-bg-3);
   border-left: 3px solid hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
   border-radius: 0 var(--darker-radius-ui) var(--darker-radius-ui) 0;
+  max-width: 100%;
+  margin-top: 6px;
 }
 
 /* Media (images, videos) */
@@ -385,26 +450,73 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
   overflow: hidden;
 }
 
+/* Code blocks */
+.markup-2BOw-j code {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+  padding: 3px 6px;
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.markup-2BOw-j pre {
+  background-color: var(--darker-bg-3) !important;
+  border-radius: var(--darker-radius-ui);
+  padding: 10px;
+  border: none;
+}
+
+/* Blockquotes */
+.blockquoteContainer-U5TVEi {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+  margin: 8px 0;
+  padding: 2px 10px;
+}
+
+.blockquoteContainer-U5TVEi .blockquoteDivider-2hH8H6 {
+  background-color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+}
+
 /* 9.3 Message Input */
 .form-2fGMdU {
-  margin: 0;
-  padding: var(--darker-spacing-ui);
+  margin: 8px 10px;
+  padding: 8px;
   border-top: none;
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
 }
 
 .channelTextArea-rNsIhG {
   background-color: transparent;
   margin-bottom: 0;
+  padding-top: 8px;
 }
 
 .scrollableContainer-2NUZem {
-  background-color: var(--darker-bg-3);
+  background-color: var(--darker-bg-2);
   border-radius: var(--darker-radius-ui);
+  min-height: 45px;
 }
 
 .textArea-12jD-V {
   font-size: 0.9375rem;
   line-height: 1.25rem;
+  margin-top: 0;
+}
+
+/* Buttons in the message area */
+.buttons-3JBrkn {
+  position: absolute;
+  right: 10px;
+  top: -40px;
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+  padding: 8px;
+}
+
+/* GIF button */
+.button-38aScr[aria-label="Open GIF picker"] {
+  display: var(--darker-no-gifs, block);
 }
 
 /* Placeholder */
@@ -421,12 +533,18 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
   opacity: 0.7;
 }
 
-/* Emoji button */
-.emojiButton-3uL3Aw {
-  cursor: pointer;
+/* ================ 10. Member List (Moved to Left Side) ================ */
+/* Move members list to left side (revolutionary layout change) */
+.container-1D34oG {
+  flex-direction: row-reverse;
 }
 
-/* ================ 10. Member List ================ */
+.membersWrap-2h-GB4 {
+  position: relative;
+  order: -1;
+  left: 10px;
+}
+
 .members-1998pB {
   background-color: var(--darker-bg-2);
   border-radius: var(--darker-radius-ui);
@@ -435,8 +553,8 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
 
 .member-3-YXUe {
   border-radius: var(--darker-radius-ui);
-  margin: 0 var(--darker-spacing-ui);
-  padding: var(--darker-spacing-ui) 0;
+  margin: 2px 8px;
+  padding: 6px 8px;
   height: auto;
 }
 
@@ -453,7 +571,7 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
 
 /* Role groups */
 .membersGroup-v9BXpm {
-  padding: var(--darker-spacing-ui) var(--darker-spacing-ui) var(--darker-spacing-ui) calc(var(--darker-spacing-ui) * 2);
+  padding: 12px 8px 8px 16px;
   height: auto;
   font-size: 12px;
   text-transform: uppercase;
@@ -468,6 +586,7 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
   border-radius: var(--darker-radius-ui);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .headerNormal-T_seeN {
@@ -547,12 +666,13 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
   border-radius: var(--darker-radius-ui);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .item-1tOPte {
   border-radius: var(--darker-radius-ui);
-  margin: var(--darker-spacing-ui);
-  padding: 8px var(--darker-spacing-ui);
+  margin: 4px;
+  padding: 8px 12px;
 }
 
 .item-1tOPte:hover {
@@ -560,7 +680,7 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
 }
 
 .separator-2I32lJ {
-  margin: 4px var(--darker-spacing-ui);
+  margin: 4px 8px;
   background-color: rgba(255, 255, 255, 0.07);
 }
 
@@ -610,6 +730,7 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
   background-color: var(--darker-bg-2);
   border-radius: var(--darker-radius-ui);
   border: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .card-3Qj_Yx:hover {
@@ -796,29 +917,40 @@ h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3
   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
 }
 
-/* Better code blocks */
-.markup-2BOw-j code {
-  background-color: var(--darker-bg-3);
-  border-radius: var(--darker-radius-ui);
-  padding: 3px 5px;
-  font-family: 'Consolas', 'Courier New', monospace;
-}
-
-.markup-2BOw-j pre {
-  background-color: var(--darker-bg-3);
-  border-radius: var(--darker-radius-ui);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.hljs {
-  background-color: var(--darker-bg-3) !important;
-  border-radius: var(--darker-radius-ui);
-  padding: var(--darker-spacing-ui);
-}
-
 /* Improved Tooltip */
 .tooltip-2QfLtc {
   background-color: var(--darker-bg-3) !important;
   border-radius: var(--darker-radius-ui);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  padding: 10px;
+}
+
+/* Force custom backgrounds everywhere */
+:not(.pictureInPictureWindow-1B5qSe) .layer-3QrUeG {
+  background-color: var(--darker-bg-1) !important;
+}
+
+/* Dividers to be less intrusive */
+.divider-JfaTT5 {
+  opacity: 0.3;
+}
+
+/* Fix search bar position */
+.search-36MZv- {
+  margin-right: 10px;
+}
+
+/* Fix channel header */
+.children-19S4PO, .toolbar-1t6TWx {
+  margin-right: 10px;
+}
+
+/* Make sure embed links are visible */
+.anchor-3Z-8Bb {
+  text-decoration: underline;
+}
+
+/* Ensure emotes are more visible */
+.emoji {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
 }

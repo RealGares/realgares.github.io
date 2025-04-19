@@ -1,0 +1,824 @@
+/**
+ * @name Darker (Source)
+ * @author Jonno
+ * @version 1.0.0
+ * @description Core styling for the Darker theme
+ * @source https://github.com/RealGares/Darker
+ * @website https://github.com/RealGares/Darker
+*/
+
+/* Import additional files */
+@import url("https://RealGares.github.io/Darker/src/Darker-variables.css");
+@import url("https://RealGares.github.io/Darker/src/Darker-extras.css");
+
+/*
+ =============================================================================
+   TABLE OF CONTENTS
+ =============================================================================
+  1. General App Styling
+  2. Backgrounds & Backdrops
+  3. Fonts & Typography
+  4. Scrollbars
+  5. Titlebar (Windows)
+  6. Server List
+  7. Channel Sidebar
+  8. User Area
+  9. Chat Area
+    9.1 Messages
+    9.2 Attachments & Embeds
+    9.3 Message Input
+  10. Member List
+  11. Popouts & Modals
+  12. Context Menus
+  13. Settings
+  14. Status Indicators
+  15. Buttons & Inputs
+  16. Animations & Transitions
+  17. BetterDiscord-specific
+  18. Accessibility
+*/
+
+/* ================ 1. General App Styling ================ */
+body {
+  background-color: var(--darker-bg-1);
+}
+
+.appMount-3lHmkl {
+  background-color: transparent;
+}
+
+.app-2rEoOp {
+  background-color: transparent;
+}
+
+.layers-3iHuyZ {
+  margin: var(--darker-spacing-app) !important;
+}
+
+/* Add subtle border to all UI sections */
+.container-2lgZY8, .sidebar-2K8pFh, .panels-j1Uci_ {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ================ 2. Backgrounds & Backdrops ================ */
+/* Main app background */
+#app-mount {
+  background: var(--darker-bg-1);
+}
+
+/* Add custom background image support */
+#app-mount::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--darker-bg-image, none);
+  background-position: center;
+  background-size: cover;
+  opacity: var(--darker-bg-image-opacity, 0.1);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Improved backdrop filter for popouts */
+.layer-v9HyYc[style*="position: absolute"] > div {
+  backdrop-filter: blur(var(--darker-blur-amount));
+}
+
+/* Darken backdrop when modals are open */
+.backdropWithLayer-3_uhz4 {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(2px);
+}
+
+/* ================ 3. Fonts & Typography ================ */
+/* UI Font (buttons, headers, etc) */
+button, input, select, textarea, .title-29uC1r, .title-31JmR4, .channelName-2YrOjO, .name-23GUGE {
+  font-family: var(--darker-font-ui);
+}
+
+/* General text (messages, etc) */
+.markup-2BOw-j, .content-1o0f9g, .messageContent-2qWWxC, .username-1A8OIy {
+  font-family: var(--darker-font-body);
+}
+
+/* Headers (usernames, channel names, etc) */
+h1, h2, h3, h4, h5, h6, .headerText-3Uvj1Y, .username-1A8OIy, .channelName-1JRO3C, .name-uJV0GL {
+  font-family: var(--darker-font-header);
+}
+
+/* Improved text readability */
+.markup-2BOw-j {
+  line-height: 1.5;
+}
+
+/* ================ 4. Scrollbars ================ */
+::-webkit-scrollbar {
+  width: var(--darker-scrollbar-width) !important;
+  height: var(--darker-scrollbar-width) !important;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.7) !important;
+  border-radius: var(--darker-radius-ui) !important;
+  border: none !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.9) !important;
+}
+
+/* Hide scrollbar in server list but keep functionality */
+.scroller-1Bvpku::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+/* ================ 5. Titlebar (Windows) ================ */
+.titleBar-AC4pGV {
+  background-color: var(--darker-bg-2);
+  margin-top: var(--darker-spacing-app);
+  height: 22px;
+  border-radius: var(--darker-radius-ui) var(--darker-radius-ui) 0 0;
+}
+
+.winButton-iRh8-Z {
+  height: 22px;
+  top: 0;
+}
+
+.wordmarkWindows-1v0lYD {
+  color: var(--darker-text-muted);
+  padding: 4px 6px;
+}
+
+/* ================ 6. Server List ================ */
+.guilds-1SWlCJ {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+}
+
+.listItem-2P_4kh {
+  width: var(--darker-server-icon-size);
+  height: var(--darker-server-icon-size);
+  margin: 0 0 var(--darker-spacing-ui);
+}
+
+.wrapper-25eVIn {
+  width: var(--darker-server-icon-size);
+  height: var(--darker-server-icon-size);
+}
+
+.svg-1X37T1, .wrapper-1BJsBx, .wrapper-1BJsBx.selected-bZ3Lue .childWrapper-anI2G9, .wrapper-1BJsBx:hover .childWrapper-anI2G9 {
+  background-color: transparent;
+}
+
+/* Server icons */
+.childWrapper-anI2G9, .circleIconButton-1QV--Z {
+  border-radius: var(--darker-radius-server) !important;
+  background-color: var(--darker-bg-4) !important;
+  color: var(--darker-text-normal);
+}
+
+/* Selected server indicator */
+.pill-3YxEhL .item-2hkk8m {
+  background-color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+  border-radius: 0 var(--darker-radius-ui) var(--darker-radius-ui) 0;
+}
+
+/* Server folders */
+.expandedFolderBackground-1cujaW {
+  background-color: var(--darker-bg-4);
+  border-radius: var(--darker-radius-ui);
+}
+
+/* Home icon */
+.homeIcon-r0w4ny path {
+  fill: var(--darker-text-normal);
+}
+
+/* ================ 7. Channel Sidebar ================ */
+.sidebar-2K8pFh {
+  background-color: var(--darker-bg-2);
+  border-radius: var(--darker-radius-ui);
+  width: var(--darker-channels-width);
+}
+
+/* Channel list */
+.channelRow-4X_3fi {
+  margin-left: var(--darker-spacing-ui);
+  margin-right: var(--darker-spacing-ui);
+  border-radius: var(--darker-radius-ui);
+}
+
+/* Selected channel */
+.modeSelected-346R90 .content-1x5b-n, .modeSelected-346R90:hover .content-1x5b-n {
+  background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.2);
+  border-radius: var(--darker-radius-ui);
+}
+
+/* Channel hover effect */
+.containerDefault--pIXnN:hover .content-1x5b-n {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+}
+
+/* Channel categories */
+.containerDefault--pIXnN {
+  padding-top: var(--darker-spacing-ui);
+}
+
+.containerDefault--pIXnN .name-23GUGE {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  color: var(--darker-text-muted);
+}
+
+/* Voice channels */
+.containerDefault--pIXnN .modeConnected-3IsKId .content-1x5b-n {
+  background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.2);
+  border-radius: var(--darker-radius-ui);
+}
+
+/* ================ 8. User Area ================ */
+.panels-j1Uci_ {
+  background-color: var(--darker-bg-2);
+  border-radius: 0 0 var(--darker-radius-ui) var(--darker-radius-ui);
+}
+
+.container-3baos1 {
+  height: 70px;
+  padding: var(--darker-spacing-ui);
+}
+
+.avatarWrapper-2yR4wp {
+  margin-right: var(--darker-spacing-ui);
+}
+
+.nameTag-3uD-yy {
+  font-size: 14px;
+}
+
+/* Voice connected UI */
+.wrapper-24pKcD {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui) var(--darker-radius-ui) 0 0;
+  margin: 0;
+  padding: var(--darker-spacing-ui);
+}
+
+/* ================ 9. Chat Area ================ */
+.chatContent-a9vAAp {
+  background-color: var(--darker-bg-1);
+  border-radius: var(--darker-radius-ui);
+}
+
+/* Channel header */
+.title-3qD0b- {
+  background-color: var(--darker-bg-1);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  padding: 0 var(--darker-spacing-ui);
+  height: 48px;
+  border-radius: var(--darker-radius-ui) var(--darker-radius-ui) 0 0;
+}
+
+/* Chat background */
+.messagesWrapper-1sRNyd {
+  background-color: var(--darker-bg-1);
+  border-radius: 0 0 var(--darker-radius-ui) var(--darker-radius-ui);
+}
+
+/* 9.1 Messages */
+/* Message spacing */
+.cozyMessage-3V1Y8y {
+  padding: var(--darker-spacing-ui) var(--darker-spacing-ui) var(--darker-spacing-ui) calc(var(--darker-avatar-chat-size) + var(--darker-spacing-ui) * 2);
+  margin: 0;
+}
+
+/* Message background - grouped */
+.message-2qnXI6 {
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+/* Message hover state */
+.message-2qnXI6:hover {
+  background-color: hsla(0, 0%, 100%, 0.03);
+}
+
+/* Message with new author */
+.cozyMessage-3V1Y8y.groupStart-23k01U {
+  margin-top: var(--darker-spacing-ui);
+  border-radius: var(--darker-radius-ui) var(--darker-radius-ui) 0 0;
+}
+
+/* Last message in group */
+.cozyMessage-3V1Y8y:not(:has(+ .groupStart-23k01U)) {
+  border-radius: 0 0 var(--darker-radius-ui) var(--darker-radius-ui);
+}
+
+/* Timestamp */
+.timestamp-3ZCmNB {
+  font-size: 0.7rem;
+  color: var(--darker-text-muted);
+}
+
+/* Message username */
+.username-1A8OIy {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* User avatar in chat */
+.avatar-1BDn8e {
+  width: var(--darker-avatar-chat-size) !important;
+  height: var(--darker-avatar-chat-size) !important;
+  top: var(--darker-spacing-ui) !important;
+  left: var(--darker-spacing-ui) !important;
+  border-radius: var(--darker-radius-avatar) !important;
+}
+
+/* New Messages bar */
+.newMessagesBar-265mhP {
+  background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.9);
+  border-radius: 0 0 var(--darker-radius-ui) var(--darker-radius-ui);
+}
+
+/* Jump to present button */
+.jumpToPresentBar-G1R9s6 {
+  background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.9);
+  border-radius: var(--darker-radius-ui) var(--darker-radius-ui) 0 0;
+}
+
+/* Mention highlight */
+.mentioned-xhSam7 {
+  background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), 30%, 0.1) !important;
+  border-left: 3px solid hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+}
+
+/* 9.2 Attachments & Embeds */
+/* File attachment */
+.attachment-33OFj0 {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+  border: none;
+}
+
+/* Embed messages */
+.embedFull-2tM8-- {
+  background-color: var(--darker-bg-3);
+  border-left: 3px solid hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+  border-radius: 0 var(--darker-radius-ui) var(--darker-radius-ui) 0;
+}
+
+/* Media (images, videos) */
+.imageWrapper-2p5ogY, .embedVideo-3nf0O9 {
+  border-radius: var(--darker-radius-ui);
+  overflow: hidden;
+}
+
+/* 9.3 Message Input */
+.form-2fGMdU {
+  margin: 0;
+  padding: var(--darker-spacing-ui);
+  border-top: none;
+}
+
+.channelTextArea-rNsIhG {
+  background-color: transparent;
+  margin-bottom: 0;
+}
+
+.scrollableContainer-2NUZem {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+}
+
+.textArea-12jD-V {
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
+}
+
+/* Placeholder */
+.placeholder-37qJjk {
+  color: var(--darker-text-muted);
+}
+
+/* Typing indicator */
+.typing-2GQL18 {
+  background-color: transparent;
+  bottom: 100%;
+  padding: 0;
+  margin-left: var(--darker-spacing-ui);
+  opacity: 0.7;
+}
+
+/* Emoji button */
+.emojiButton-3uL3Aw {
+  cursor: pointer;
+}
+
+/* ================ 10. Member List ================ */
+.members-1998pB {
+  background-color: var(--darker-bg-2);
+  border-radius: var(--darker-radius-ui);
+  width: var(--darker-members-width);
+}
+
+.member-3-YXUe {
+  border-radius: var(--darker-radius-ui);
+  margin: 0 var(--darker-spacing-ui);
+  padding: var(--darker-spacing-ui) 0;
+  height: auto;
+}
+
+.member-3-YXUe:hover {
+  background-color: var(--darker-bg-3);
+}
+
+/* Member avatar */
+.member-3-YXUe .avatar-3uk_u9 {
+  width: var(--darker-avatar-list-size) !important;
+  height: var(--darker-avatar-list-size) !important;
+  border-radius: var(--darker-radius-avatar) !important;
+}
+
+/* Role groups */
+.membersGroup-v9BXpm {
+  padding: var(--darker-spacing-ui) var(--darker-spacing-ui) var(--darker-spacing-ui) calc(var(--darker-spacing-ui) * 2);
+  height: auto;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--darker-text-muted);
+}
+
+/* ================ 11. Popouts & Modals ================ */
+/* User popout */
+.userPopout-3XzG_A {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+}
+
+.headerNormal-T_seeN {
+  background-color: var(--darker-bg-4);
+}
+
+.body-3iLsc4, .footer-1fjuF6 {
+  background-color: var(--darker-bg-3);
+}
+
+/* User profile modal */
+.root-SR8cQa {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.topSectionNormal-2-vo2m {
+  background-color: var(--darker-bg-4);
+}
+
+.body-3ND3kc {
+  background-color: var(--darker-bg-3);
+}
+
+/* Embeds in profile */
+.userInfoBody-2_abR- .codeBlock-2GwpXl {
+  background-color: var(--darker-bg-4);
+  border: none;
+  border-radius: var(--darker-radius-ui);
+}
+
+/* Other modals */
+.modal-yWgWj- {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+}
+
+.footer-2gL1pp {
+  background-color: var(--darker-bg-3);
+  box-shadow: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Search popout */
+.container-3ayLPN {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
+}
+
+.option-96V44q:after {
+  display: none;
+}
+
+.option-96V44q.selected-rZcOL- {
+  background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.2);
+  border-radius: var(--darker-radius-ui);
+}
+
+/* Calendar Picker (in search) */
+.calendarPicker-2yf6Ci .react-datepicker {
+  background-color: var(--darker-bg-3);
+}
+
+.calendarPicker-2yf6Ci .react-datepicker__day--selected:after {
+  background-color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+}
+
+.calendarPicker-2yf6Ci .react-datepicker__day:hover {
+  background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.3);
+}
+
+/* ================ 12. Context Menus ================ */
+.menu-3sdvDG {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+}
+
+.item-1tOPte {
+  border-radius: var(--darker-radius-ui);
+  margin: var(--darker-spacing-ui);
+  padding: 8px var(--darker-spacing-ui);
+}
+
+.item-1tOPte:hover {
+  background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.2);
+}
+
+.separator-2I32lJ {
+  margin: 4px var(--darker-spacing-ui);
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+/* ================ 13. Settings ================ */
+.standardSidebarView-3F1I7i {
+  background-color: transparent;
+}
+
+.sidebarRegionScroller-3MXcoP {
+  background-color: var(--darker-bg-2);
+  border-radius: var(--darker-radius-ui);
+}
+
+.contentRegionScroller-26nc1e {
+  background-color: var(--darker-bg-1);
+  border-radius: var(--darker-radius-ui);
+}
+
+/* Sidebar */
+.sidebar-CFHs9e {
+  padding: var(--darker-spacing-ui);
+  width: 220px;
+}
+
+.item-PXvHYJ {
+  border-radius: var(--darker-radius-ui);
+  padding: 8px var(--darker-spacing-ui);
+  margin-bottom: 2px;
+}
+
+.item-PXvHYJ.selected-3s45Ha {
+  background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.2);
+}
+
+.item-PXvHYJ:hover {
+  background-color: var(--darker-bg-3);
+}
+
+/* Content */
+.contentColumn-2hrIYH {
+  max-width: 740px;
+  padding: var(--darker-spacing-ui) calc(var(--darker-spacing-ui) * 2);
+}
+
+/* Cards */
+.card-3Qj_Yx {
+  background-color: var(--darker-bg-2);
+  border-radius: var(--darker-radius-ui);
+  border: none;
+}
+
+.card-3Qj_Yx:hover {
+  background-color: var(--darker-bg-3);
+  transform: translateY(-2px);
+}
+
+/* ================ 14. Status Indicators ================ */
+/* Status in member list */
+.status-1AY8sU {
+  height: 12px;
+  width: 12px;
+}
+
+/* Round status indicators */
+.status-1AY8sU {
+  border-radius: 50%;
+}
+
+/* Status colors */
+.online-2S838R { background-color: var(--darker-online) !important; }
+.idle-3DEnRT { background-color: var(--darker-idle) !important; }
+.dnd-1_xrcq { background-color: var(--darker-dnd) !important; }
+.streaming-2_dnHe { background-color: var(--darker-streaming) !important; }
+.offline-3nJYBR, .invisible-1kp8Z0 { background-color: var(--darker-offline) !important; }
+
+/* ================ 15. Buttons & Inputs ================ */
+/* Buttons */
+.lookFilled-1Gx00P, .lookOutlined-3sRXeN, .lookInverted-2D7oAl {
+  border-radius: var(--darker-radius-ui);
+  transition: background-color var(--darker-transition-speed), border-color var(--darker-transition-speed);
+}
+
+.lookFilled-1Gx00P.colorBrand-3pXr91 {
+  background-color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+}
+
+.lookFilled-1Gx00P.colorBrand-3pXr91:hover {
+  background-color: hsl(var(--darker-accent-h), var(--darker-accent-s), calc(var(--darker-accent-l) - 10%));
+}
+
+/* Inputs */
+.input-cIJ7To {
+  background-color: var(--darker-bg-3);
+  border: 1px solid transparent;
+  border-radius: var(--darker-radius-ui);
+  transition: border-color var(--darker-transition-speed);
+}
+
+.input-cIJ7To:focus, .input-cIJ7To:hover {
+  border-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.5);
+}
+
+/* Sliders */
+.slider-1PF9SW .bar-2Qqk5Z {
+  background-color: var(--darker-bg-3);
+  height: 6px;
+}
+
+.slider-1PF9SW .barFill-23-gu- {
+  background-color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+}
+
+.grabber-3mFHz2 {
+  background-color: var(--darker-text-normal);
+  border: 3px solid hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+}
+
+/* Switches */
+.container-3auIfb {
+  background-color: var(--darker-bg-3) !important;
+}
+
+.container-3auIfb[style*="rgb(59, 165, 92)"], 
+.container-3auIfb[style*="rgb(67, 181, 129)"] {
+  background-color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l)) !important;
+}
+
+/* Radio Groups */
+.item-26Dhrx {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+}
+
+.item-26Dhrx[style*="rgb(114, 137, 218)"] {
+  background-color: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.3) !important;
+  border-color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l)) !important;
+}
+
+/* ================ 16. Animations & Transitions ================ */
+/* Smooth transitions for everything */
+*, ::before, ::after {
+  transition-property: background-color, border-color, color, box-shadow, opacity, transform;
+  transition-duration: var(--darker-transition-speed);
+  transition-timing-function: ease;
+}
+
+/* Fix some elements that shouldn't have transitions */
+.scrollerBase-289Jih, .scroller-2LSbBU, .typing-2GQL18, .scroller-RmtA4e {
+  transition: none;
+}
+
+/* Disable transitions with prefers-reduced-motion */
+@media (prefers-reduced-motion) {
+  *, ::before, ::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ================ 17. BetterDiscord-specific ================ */
+/* BetterDiscord settings */
+.bd-addon-list .bd-addon-card {
+  background-color: var(--darker-bg-2);
+  border-radius: var(--darker-radius-ui);
+  border: none;
+}
+
+.bd-addon-list .bd-addon-header {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui) var(--darker-radius-ui) 0 0;
+}
+
+/* BetterDiscord toasts */
+.bd-toast {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.bd-toast.toast-success {
+  background-color: var(--darker-online);
+}
+
+.bd-toast.toast-error {
+  background-color: var(--darker-dnd);
+}
+
+.bd-toast.toast-warning {
+  background-color: var(--darker-idle);
+}
+
+.bd-toast.toast-info {
+  background-color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+}
+
+/* BetterDiscord switches */
+.bd-switch input:checked + .bd-switch-body {
+  background-color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+}
+
+.bd-switch-body {
+  background-color: var(--darker-bg-3);
+}
+
+/* BetterDiscord settings sidebar */
+.bd-sidebar-header {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--darker-text-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  margin-bottom: var(--darker-spacing-ui);
+}
+
+/* ================ 18. Accessibility ================ */
+/* High contrast elements for better readability */
+.wrapper-2jXpOf:hover, 
+.member-3-YXUe:hover,
+.messageContent-2qWWxC,
+.applicationCommandName-2yU7I6 {
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.7);
+}
+
+/* Improved focus indicators */
+*:focus-visible {
+  outline: 2px solid hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l)) !important;
+  outline-offset: 1px;
+}
+
+/* Improved contrast for links and mentions */
+.anchor-3Z-8Bb, .mention {
+  color: hsl(var(--darker-accent-h), var(--darker-accent-s), calc(var(--darker-accent-l) + 10%));
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Better code blocks */
+.markup-2BOw-j code {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+  padding: 3px 5px;
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.markup-2BOw-j pre {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hljs {
+  background-color: var(--darker-bg-3) !important;
+  border-radius: var(--darker-radius-ui);
+  padding: var(--darker-spacing-ui);
+}
+
+/* Improved Tooltip */
+.tooltip-2QfLtc {
+  background-color: var(--darker-bg-3) !important;
+  border-radius: var(--darker-radius-ui);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}

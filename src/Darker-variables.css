@@ -1,0 +1,229 @@
+/**
+ * @name Darker (Variables)
+ * @author Jonno
+ * @version 1.0.0
+ * @description Variables for the Darker theme
+ * @source https://github.com/RealGares/Darker
+ * @website https://github.com/RealGares/Darker
+*/
+
+/*
+ =============================================================================
+   DERIVED VARIABLES
+   This file contains computed variables based on user settings
+   These should not be edited directly - modify the main Darker.theme.css file
+ =============================================================================
+*/
+
+:root {
+  /* Calculate accent color variations */
+  --darker-accent: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+  --darker-accent-light: hsl(var(--darker-accent-h), var(--darker-accent-s), calc(var(--darker-accent-l) + 15%));
+  --darker-accent-dark: hsl(var(--darker-accent-h), var(--darker-accent-s), calc(var(--darker-accent-l) - 15%));
+  --darker-accent-alpha: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.3);
+  --darker-accent-alpha-light: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.15);
+  
+  /* Calculate shadow values based on user preference */
+  --darker-shadow-small: calc(var(--darker-shadows) * 0px) calc(var(--darker-shadows) * 2px) calc(var(--darker-shadows) * 5px) rgba(0, 0, 0, 0.2);
+  --darker-shadow-medium: calc(var(--darker-shadows) * 0px) calc(var(--darker-shadows) * 4px) calc(var(--darker-shadows) * 10px) rgba(0, 0, 0, 0.3);
+  --darker-shadow-large: calc(var(--darker-shadows) * 0px) calc(var(--darker-shadows) * 8px) calc(var(--darker-shadows) * 20px) rgba(0, 0, 0, 0.4);
+  
+  /* Preset backgrounds for reusability */
+  --darker-card-bg: var(--darker-bg-3);
+  --darker-popout-bg: var(--darker-bg-3);
+  --darker-modal-bg: var(--darker-bg-2);
+  
+  /* Spacing presets */
+  --darker-spacing-sm: calc(var(--darker-spacing-ui) / 2);
+  --darker-spacing-lg: calc(var(--darker-spacing-ui) * 2);
+  --darker-spacing-xl: calc(var(--darker-spacing-ui) * 3);
+  
+  /* For better readability */
+  --darker-font-weight-normal: 400;
+  --darker-font-weight-medium: 500;
+  --darker-font-weight-semibold: 600;
+  --darker-font-weight-bold: 700;
+  
+  /* Transitions and animations */
+  --darker-transition-time: 0.2s;
+  --darker-transition-function: ease;
+  
+  /* Preset opacity levels */
+  --darker-opacity-low: 0.3;
+  --darker-opacity-medium: 0.6;
+  --darker-opacity-high: 0.9;
+  
+  /* Z-index layers */
+  --darker-z-app: 1;
+  --darker-z-popout: 1000;
+  --darker-z-modal: 2000;
+  --darker-z-toast: 3000;
+}
+
+/* Dark theme */
+.theme-dark {
+  /* Brand colors from Discord */
+  --brand-experiment: var(--darker-accent) !important;
+  --brand-experiment-15a: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.15) !important;
+  --brand-experiment-30a: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.3) !important;
+  --brand-experiment-200: var(--darker-accent-light) !important;
+  --brand-experiment-560: var(--darker-accent-dark) !important;
+  
+  /* Discord UI colors */
+  --activity-card-background: var(--darker-bg-3);
+  --background-accent: var(--darker-accent);
+  --background-floating: var(--darker-bg-3);
+  --background-mobile-primary: var(--darker-bg-1);
+  --background-mobile-secondary: var(--darker-bg-2);
+  --background-modifier-accent: rgba(255, 255, 255, 0.06);
+  --background-modifier-active: rgba(255, 255, 255, 0.07);
+  --background-modifier-hover: rgba(255, 255, 255, 0.04);
+  --background-modifier-selected: rgba(255, 255, 255, 0.07);
+  --background-nested-floating: var(--darker-bg-1);
+  --background-primary: var(--darker-bg-1);
+  --background-secondary: var(--darker-bg-2);
+  --background-secondary-alt: var(--darker-bg-3);
+  --background-tertiary: var(--darker-bg-2);
+  --button-danger-background: hsl(359, 87%, 59%);
+  --button-danger-background-active: hsl(359, 87%, 39%);
+  --button-danger-background-disabled: hsl(359, 87%, 49%);
+  --button-danger-background-hover: hsl(359, 87%, 49%);
+  --button-outline-brand-border: var(--darker-accent);
+  --button-outline-brand-background: transparent;
+  --button-outline-brand-background-active: var(--darker-accent-alpha);
+  --button-outline-brand-background-hover: var(--darker-accent-alpha-light);
+  --button-outline-brand-text: var(--darker-accent);
+  --button-outline-brand-text-active: var(--darker-text-normal);
+  --button-outline-brand-text-hover: var(--darker-accent-light);
+  --button-outline-danger-border: hsl(359, 87%, 59%);
+  --button-outline-danger-text: hsl(359, 87%, 69%);
+  --button-outline-danger-text-active: hsl(359, 87%, 85%);
+  --button-outline-danger-text-hover: hsl(359, 87%, 79%);
+  --button-outline-positive-border: hsl(139, 51%, 52%);
+  --button-outline-positive-text: hsl(139, 51%, 58%);
+  --button-outline-positive-text-active: hsl(139, 51%, 75%);
+  --button-outline-positive-text-hover: hsl(139, 51%, 68%);
+  --button-outline-primary-border: hsl(0, 0%, 60%);
+  --button-outline-primary-text: hsl(0, 0%, 80%);
+  --button-outline-primary-text-active: hsl(0, 0%, 100%);
+  --button-outline-primary-text-hover: hsl(0, 0%, 90%);
+  --button-positive-background: hsl(139, 51%, 52%);
+  --button-positive-background-active: hsl(139, 51%, 32%);
+  --button-positive-background-disabled: hsl(139, 51%, 42%);
+  --button-positive-background-hover: hsl(139, 51%, 42%);
+  --button-secondary-background: hsl(0, 0%, 20%);
+  --button-secondary-background-active: hsl(0, 0%, 10%);
+  --button-secondary-background-disabled: hsl(0, 0%, 15%);
+  --button-secondary-background-hover: hsl(0, 0%, 15%);
+  --channels-default: var(--darker-text-muted);
+  --channeltextarea-background: var(--darker-bg-3);
+  --deprecated-card-bg: rgba(0, 0, 0, 0.2);
+  --deprecated-card-editable-bg: rgba(0, 0, 0, 0.1);
+  --deprecated-quickswitcher-input-background: var(--darker-bg-1);
+  --deprecated-quickswitcher-input-placeholder: hsla(0, 0%, 100%, 0.3);
+  --deprecated-store-bg: var(--darker-bg-1);
+  --deprecated-text-input-bg: var(--darker-bg-3);
+  --deprecated-text-input-border: rgba(0, 0, 0, 0.3);
+  --deprecated-text-input-border-disabled: var(--darker-bg-1);
+  --deprecated-text-input-border-hover: rgba(0, 0, 0, 0.6);
+  --deprecated-text-input-prefix: var(--darker-text-muted);
+  --display-banner-overflow-background: rgba(0, 0, 0, 0.5);
+  --elevation-high: 0 8px 16px rgba(0, 0, 0, 0.24);
+  --elevation-low: 0 1px 5px rgba(0, 0, 0, 0.3);
+  --elevation-medium: 0 4px 10px rgba(0, 0, 0, 0.3);
+  --elevation-stroke: 0 0 0 1px rgba(0, 0, 0, 0.15);
+  --channel-text-area-placeholder: var(--darker-text-muted);
+  --interactive-active: var(--darker-text-normal);
+  --interactive-hover: var(--darker-text-normal);
+  --interactive-muted: var(--darker-text-muted);
+  --interactive-normal: var(--darker-text-muted);
+  --scrollbar-auto-thumb: var(--darker-bg-4);
+  --scrollbar-auto-track: var(--darker-bg-2);
+  --scrollbar-thin-thumb: var(--darker-bg-4);
+  --scrollbar-thin-track: transparent;
+  --input-background: var(--darker-bg-3);
+}
+
+/* Light theme - we're overriding it to be dark */
+.theme-light {
+  /* Brand colors from Discord */
+  --brand-experiment: var(--darker-accent) !important;
+  --brand-experiment-15a: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.15) !important;
+  --brand-experiment-30a: hsla(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l), 0.3) !important;
+  --brand-experiment-200: var(--darker-accent-light) !important;
+  --brand-experiment-560: var(--darker-accent-dark) !important;
+  
+  /* Discord UI colors - force dark theme */
+  --activity-card-background: var(--darker-bg-3);
+  --background-accent: var(--darker-accent);
+  --background-floating: var(--darker-bg-3);
+  --background-mobile-primary: var(--darker-bg-1);
+  --background-mobile-secondary: var(--darker-bg-2);
+  --background-modifier-accent: rgba(255, 255, 255, 0.06);
+  --background-modifier-active: rgba(255, 255, 255, 0.07);
+  --background-modifier-hover: rgba(255, 255, 255, 0.04);
+  --background-modifier-selected: rgba(255, 255, 255, 0.07);
+  --background-nested-floating: var(--darker-bg-1);
+  --background-primary: var(--darker-bg-1);
+  --background-secondary: var(--darker-bg-2);
+  --background-secondary-alt: var(--darker-bg-3);
+  --background-tertiary: var(--darker-bg-2);
+  --channeltextarea-background: var(--darker-bg-3);
+  --channels-default: var(--darker-text-muted);
+  --deprecated-card-bg: rgba(0, 0, 0, 0.2);
+  --deprecated-card-editable-bg: rgba(0, 0, 0, 0.1);
+  --deprecated-store-bg: var(--darker-bg-1);
+  --deprecated-quickswitcher-input-background: var(--darker-bg-1);
+  --deprecated-quickswitcher-input-placeholder: hsla(0, 0%, 100%, 0.3);
+  --deprecated-text-input-bg: var(--darker-bg-3);
+  --deprecated-text-input-border: rgba(0, 0, 0, 0.3);
+  --deprecated-text-input-border-disabled: var(--darker-bg-1);
+  --deprecated-text-input-border-hover: rgba(0, 0, 0, 0.6);
+  --deprecated-text-input-prefix: var(--darker-text-muted);
+  --channel-text-area-placeholder: var(--darker-text-muted);
+  --interactive-active: var(--darker-text-normal);
+  --interactive-hover: var(--darker-text-normal);
+  --interactive-muted: var(--darker-text-muted);
+  --interactive-normal: var(--darker-text-muted);
+  --scrollbar-auto-thumb: var(--darker-bg-4);
+  --scrollbar-auto-track: var(--darker-bg-2);
+  --scrollbar-thin-thumb: var(--darker-bg-4);
+  --scrollbar-thin-track: transparent;
+  --input-background: var(--darker-bg-3);
+  
+  /* Convert light to dark for these specific elements */
+  --header-primary: var(--darker-text-normal) !important;
+  --header-secondary: var(--darker-text-muted) !important;
+  --text-normal: var(--darker-text-normal) !important;
+  --text-muted: var(--darker-text-muted) !important;
+}
+
+/* AMOLED mode for even darker experience */
+.theme-dark.darker-amoled-mode {
+  --darker-bg-1: #000000;
+  --darker-bg-2: #050505;
+  --darker-bg-3: #0a0a0a;
+  --darker-bg-4: #0f0f0f;
+  
+  /* Adjust shadows for better visibility on pure black */
+  --darker-shadow-small: 0 2px 5px rgba(0, 0, 0, 0.5);
+  --darker-shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.6);
+  --darker-shadow-large: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+/* Accessibility: High contrast mode */
+.theme-dark.darker-high-contrast {
+  --darker-text-normal: #ffffff;
+  --darker-text-muted: #c0c0c0;
+  --darker-text-link: hsl(var(--darker-accent-h), 100%, 75%);
+  
+  /* Enhanced borders for better element separation */
+  --darker-border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Reduce animations when needed */
+@media (prefers-reduced-motion) {
+  :root {
+    --darker-transition-time: 0s;
+  }
+}

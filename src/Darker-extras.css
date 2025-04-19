@@ -1,0 +1,430 @@
+/**
+ * @name Darker (Extras)
+ * @author Jonno
+ * @version 1.0.0
+ * @description Additional features for the Darker theme
+ * @source https://github.com/RealGares/Darker
+ * @website https://github.com/RealGares/Darker
+*/
+
+/*
+ =============================================================================
+   EXTRA FEATURES
+   This file contains optional features that can be toggled in the theme
+ =============================================================================
+*/
+
+/* ================ Compact Mode ================ */
+/* Enable by adding the class "darker-compact-mode" to :root */
+.darker-compact-mode {
+  --darker-spacing-ui: 6px;
+  --darker-avatar-chat-size: 32px;
+  --darker-avatar-list-size: 24px;
+}
+
+.darker-compact-mode .member-3-YXUe {
+  padding: 2px 0;
+  min-height: 36px;
+}
+
+.darker-compact-mode .cozyMessage-3V1Y8y {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.darker-compact-mode .chatContent-a9vAAp {
+  --group-spacing: 4px;
+}
+
+.darker-compact-mode .container-3baos1 {
+  height: 52px;
+}
+
+/* ================ Centered Mode ================ */
+/* Enable by adding the class "darker-centered-mode" to :root */
+.darker-centered-mode .chatContent-a9vAAp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.darker-centered-mode .form-2fGMdU {
+  margin: 0 auto;
+  max-width: 950px;
+  width: 100%;
+}
+
+.darker-centered-mode .scrollerInner-2YIMLh {
+  max-width: 950px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.darker-centered-mode .cozyMessage-3V1Y8y {
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ================ Rounded Mode ================ */
+/* Enable by adding the class "darker-rounded-mode" to :root */
+.darker-rounded-mode {
+  --darker-radius-ui: 12px;
+  --darker-radius-avatar: 50%;
+  --darker-radius-server: 50%;
+}
+
+/* ================ No Background Mode ================ */
+/* Enable by adding the class "darker-no-background" to :root */
+.darker-no-background #app-mount::before {
+  display: none;
+}
+
+/* ================ Custom Status Bar Colors ================ */
+/* Enable by adding the class "darker-custom-status-bars" to :root */
+.darker-custom-status-bars .online-2S838R {
+  background: linear-gradient(90deg, var(--darker-online), var(--darker-online-bright, #5fdd9d)) !important;
+}
+
+.darker-custom-status-bars .idle-3DEnRT {
+  background: linear-gradient(90deg, var(--darker-idle), var(--darker-idle-bright, #ffd066)) !important;
+}
+
+.darker-custom-status-bars .dnd-1_xrcq {
+  background: linear-gradient(90deg, var(--darker-dnd), var(--darker-dnd-bright, #ff7a7a)) !important;
+}
+
+.darker-custom-status-bars .streaming-2_dnHe {
+  background: linear-gradient(90deg, var(--darker-streaming), var(--darker-streaming-bright, #a875ff)) !important;
+}
+
+.darker-custom-status-bars .offline-3nJYBR, 
+.darker-custom-status-bars .invisible-1kp8Z0 {
+  background: linear-gradient(90deg, var(--darker-offline), var(--darker-offline-bright, #a0a0a6)) !important;
+}
+
+/* ================ Row Colors ================ */
+/* Enable by adding the class "darker-row-colorizer" to :root */
+.darker-row-colorizer .member-3-YXUe:nth-child(odd) {
+  background-color: hsla(var(--darker-accent-h), 10%, 15%, 0.3);
+}
+
+.darker-row-colorizer .message-2qnXI6:nth-child(even) {
+  background-color: hsla(var(--darker-accent-h), 10%, 15%, 0.2);
+}
+
+/* ================ Glass Mode ================ */
+/* Enable by adding the class "darker-glass-mode" to :root */
+.darker-glass-mode .sidebar-2K8pFh,
+.darker-glass-mode .container-1taM1r,
+.darker-glass-mode .container-3w7J-x,
+.darker-glass-mode .panels-j1Uci_,
+.darker-glass-mode .container-1r6BKw,
+.darker-glass-mode .members-1998pB,
+.darker-glass-mode .guilds-1SWlCJ,
+.darker-glass-mode .chatContent-a9vAAp,
+.darker-glass-mode .title-3qD0b-,
+.darker-glass-mode .scrollableContainer-2NUZem,
+.darker-glass-mode .card-3Qj_Yx,
+.darker-glass-mode .peopleList-3c4jOR {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(calc(var(--darker-blur-amount) * 1.5));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.darker-glass-mode {
+  --darker-bg-1: rgba(16, 16, 20, 0.6);
+  --darker-bg-2: rgba(22, 22, 28, 0.6);
+  --darker-bg-3: rgba(28, 28, 36, 0.6);
+  --darker-bg-4: rgba(35, 35, 48, 0.6);
+}
+
+.darker-glass-mode .container-1r6BKw {
+  backdrop-filter: blur(calc(var(--darker-blur-amount) * 2));
+}
+
+/* ================ Custom CSS Code Block Syntax Highlighting ================ */
+.darker-custom-code-blocks code.hljs {
+  color: #e0e0e0;
+}
+
+.darker-custom-code-blocks .hljs-comment,
+.darker-custom-code-blocks .hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.darker-custom-code-blocks .hljs-doctag,
+.darker-custom-code-blocks .hljs-keyword,
+.darker-custom-code-blocks .hljs-formula {
+  color: #c678dd;
+}
+
+.darker-custom-code-blocks .hljs-section,
+.darker-custom-code-blocks .hljs-name,
+.darker-custom-code-blocks .hljs-selector-tag,
+.darker-custom-code-blocks .hljs-deletion,
+.darker-custom-code-blocks .hljs-subst {
+  color: #e06c75;
+}
+
+.darker-custom-code-blocks .hljs-literal {
+  color: #56b6c2;
+}
+
+.darker-custom-code-blocks .hljs-string,
+.darker-custom-code-blocks .hljs-regexp,
+.darker-custom-code-blocks .hljs-addition,
+.darker-custom-code-blocks .hljs-attribute,
+.darker-custom-code-blocks .hljs-meta-string {
+  color: #98c379;
+}
+
+.darker-custom-code-blocks .hljs-built_in,
+.darker-custom-code-blocks .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+
+.darker-custom-code-blocks .hljs-attr,
+.darker-custom-code-blocks .hljs-variable,
+.darker-custom-code-blocks .hljs-template-variable,
+.darker-custom-code-blocks .hljs-type,
+.darker-custom-code-blocks .hljs-selector-class,
+.darker-custom-code-blocks .hljs-selector-attr,
+.darker-custom-code-blocks .hljs-selector-pseudo,
+.darker-custom-code-blocks .hljs-number {
+  color: #d19a66;
+}
+
+.darker-custom-code-blocks .hljs-symbol,
+.darker-custom-code-blocks .hljs-bullet,
+.darker-custom-code-blocks .hljs-link,
+.darker-custom-code-blocks .hljs-meta,
+.darker-custom-code-blocks .hljs-selector-id,
+.darker-custom-code-blocks .hljs-title {
+  color: #61aeee;
+}
+
+.darker-custom-code-blocks .hljs-emphasis {
+  font-style: italic;
+}
+
+.darker-custom-code-blocks .hljs-strong {
+  font-weight: bold;
+}
+
+.darker-custom-code-blocks .hljs-link {
+  text-decoration: underline;
+}
+
+/* ================ Gradient Text Effects ================ */
+/* Enable by adding the class "darker-gradient-text" to :root */
+.darker-gradient-text .username-1A8OIy,
+.darker-gradient-text .title-29uC1r, 
+.darker-gradient-text .name-uJV0GL {
+  background: linear-gradient(
+    90deg, 
+    hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l)),
+    hsl(calc(var(--darker-accent-h) + 40), var(--darker-accent-s), var(--darker-accent-l))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+/* ================ Rainbow Friends ================ */
+/* Enable by adding the class "darker-rainbow-friends" to :root */
+.darker-rainbow-friends .username-1A8OIy {
+  animation: darker-rainbow 6s linear infinite;
+}
+
+@keyframes darker-rainbow {
+  0% { color: #ff0000; }
+  17% { color: #ffff00; }
+  33% { color: #00ff00; }
+  50% { color: #00ffff; }
+  67% { color: #0000ff; }
+  83% { color: #ff00ff; }
+  100% { color: #ff0000; }
+}
+
+/* ================ Frosted Glass Popouts ================ */
+/* Enable by adding the class "darker-frosted-popouts" to :root */
+.darker-frosted-popouts .userPopout-3XzG_A,
+.darker-frosted-popouts .container-3ayLPN,
+.darker-frosted-popouts .menu-3sdvDG,
+.darker-frosted-popouts .messagesPopoutWrap-1MQ1bW,
+.darker-frosted-popouts .modal-yWgWj-,
+.darker-frosted-popouts .root-1gCeng {
+  background-color: rgba(16, 16, 24, 0.7) !important;
+  backdrop-filter: blur(calc(var(--darker-blur-amount) * 2));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.darker-frosted-popouts .headerNormal-T_seeN,
+.darker-frosted-popouts .headerPlaying-j0WQBV,
+.darker-frosted-popouts .headerStreaming-2FjmGz,
+.darker-frosted-popouts .headerSpotify-zpWxgT {
+  background: rgba(23, 23, 34, 0.8) !important;
+}
+
+.darker-frosted-popouts .body-3iLsc4,
+.darker-frosted-popouts .footer-1fjuF6 {
+  background-color: transparent !important;
+}
+
+/* ================ Emoji Improvements ================ */
+/* Enable by adding the class "darker-better-emojis" to :root */
+.darker-better-emojis .emoji {
+  height: 1.5em !important; 
+  width: 1.5em !important;
+}
+
+.darker-better-emojis .jumboable {
+  height: 3em !important;
+  width: 3em !important;
+}
+
+.darker-better-emojis .emoji,
+.darker-better-emojis .jumboable {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+  margin: 0 0.05em 0 0.1em !important;
+  vertical-align: -0.4em;
+}
+
+/* ================ Custom User Badges ================ */
+/* Note: This is just an example - users would need to customize it for their badges */
+.darker-custom-badges .avatar-1BDn8e[src*="YOUR_USER_ID"] ~ .header-23xsNx .username-1A8OIy::after {
+  content: "Theme Creator";
+  background-color: hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l));
+  color: white;
+  font-size: 0.6rem;
+  margin-left: 4px;
+  padding: 0 4px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  font-weight: 700;
+}
+
+/* ================ Custom Server Icons ================ */
+/* Note: This is just an example - users would need to customize it for their servers */
+.darker-custom-server-icons .wrapper-1BJsBx[aria-label="CUSTOMIZE_SERVER_NAME"] .childWrapper-anI2G9 {
+  background: url('https://example.com/your-custom-icon.png') center/cover !important;
+}
+
+/* ================ Hide Elements ================ */
+/* Enable these classes by adding them to :root */
+.darker-hide-invite-button .icon-35-fSh[name="PersonAdd"] {
+  display: none;
+}
+
+.darker-hide-gif-button .button-38aScr[aria-label="Open GIF picker"] {
+  display: none;
+}
+
+.darker-hide-gift-button .button-38aScr[aria-label="Send a gift"] {
+  display: none;
+}
+
+.darker-hide-sticker-button .button-38aScr[aria-label="Open sticker picker"] {
+  display: none;
+}
+
+.darker-hide-help-button .anchor-3Z-8Bb[aria-label="Help"] {
+  display: none;
+}
+
+.darker-hide-threads .icon-2xnN2Y[name="Thread"] {
+  display: none;
+}
+
+/* ================ BetterDiscord Plugin Compatibility ================ */
+/* MessageLogger plugin compatibility */
+.darker-style-messagelogger #message-logger-log-btn {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+}
+
+/* BetterFormattingRedux plugin compatibility */
+.darker-style-bfredux .bf-toolbar {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+}
+
+.darker-style-bfredux .bf-toolbar::before {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+}
+
+/* ServerFolders plugin compatibility */
+.darker-style-serverfolders .guild-1EfMGQ.folder .guildIcon-aCJZtg {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-server);
+}
+
+/* CharCounter plugin compatibility */
+.darker-style-charcounter .charCounter-7fw40k {
+  color: var(--darker-text-muted);
+}
+
+/* SpotifyControls plugin compatibility */
+.darker-style-spotifycontrols .container-6sXIoE {
+  background-color: var(--darker-bg-3);
+  border-radius: var(--darker-radius-ui);
+}
+
+/* ================ Custom Font Support ================ */
+/* Enable by adding the class "darker-custom-font" to :root */
+.darker-custom-font {
+  --darker-font-ui: var(--darker-custom-font-ui, 'Poppins');
+  --darker-font-body: var(--darker-custom-font-body, 'Roboto');
+  --darker-font-header: var(--darker-custom-font-header, 'Poppins');
+}
+
+/* Import example for custom fonts (uncomment and customize) */
+/*
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+*/
+
+/* ================ Custom Scrollbar ================ */
+/* Enable by adding the class "darker-custom-scrollbar" to :root */
+.darker-custom-scrollbar::-webkit-scrollbar {
+  width: var(--darker-scrollbar-width) !important;
+}
+
+.darker-custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.darker-custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--darker-accent-h), var(--darker-accent-s), var(--darker-accent-l)),
+    hsl(calc(var(--darker-accent-h) + 30), var(--darker-accent-s), var(--darker-accent-l))
+  ) !important;
+  border-radius: var(--darker-radius-ui) !important;
+}
+
+.darker-custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--darker-accent-h), var(--darker-accent-s), calc(var(--darker-accent-l) + 10%)),
+    hsl(calc(var(--darker-accent-h) + 30), var(--darker-accent-s), calc(var(--darker-accent-l) + 10%))
+  ) !important;
+}
+
+/* ================ Fading Chat ================ */
+/* Enable by adding the class "darker-fading-chat" to :root */
+.darker-fading-chat .message-2qnXI6:not(:hover) {
+  transition: opacity 0.2s ease;
+  opacity: 0.7;
+}
+
+.darker-fading-chat .message-2qnXI6:hover {
+  opacity: 1;
+}

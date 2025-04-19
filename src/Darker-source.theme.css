@@ -4,12 +4,12 @@
  * @version 1.0.0
  * @description Core styling for the Darker theme
  * @source https://github.com/RealGares/Darker
- * @website https://github.com/RealGares/Darker
+ * @website https://realgares.github.io/
 */
 
 /* Import additional files */
-@import url("https://RealGares.github.io/Darker/src/Darker-variables.css");
-@import url("https://RealGares.github.io/Darker/src/Darker-extras.css");
+@import url("https://realgares.github.io/src/Darker-variables.css");
+@import url("https://realgares.github.io/src/Darker-extras.css");
 
 /*
  =============================================================================
